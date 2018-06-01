@@ -25,7 +25,7 @@
   },
   "proxy": {
     "/callback": {
-      "target": "http://locatlhost:3500"
+      "target": "http://localhost:3500"
     },
     "/api": {
       "target": "http://localhost:3500"

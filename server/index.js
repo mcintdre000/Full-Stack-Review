@@ -3,6 +3,7 @@ const massive = require('massive');
 const axios = require('axios');
 const session = require('express-session');
 const bodyParser = require('body-parser');
+const authController = require('./controllers/authController');
 require('dotenv').config();
 
 const app = express();
@@ -19,6 +20,11 @@ app.use(session({
 massive(process.env.CONNECTION_STRING).then(db => {
     app.set( 'db', db );
 })
+
+app.get('/callback', authController.login);
+app.get('/api/user', authController.getUser);
+app.post('/api/logout', authController.logout);
+app.put('/api/user', authController.editProfile);
 
 
 const port = 3500
